@@ -31,6 +31,11 @@ var AutoRed = function (port, host, opts) {
     //connects to localhost:6379
     var client = redis.createClient(port, host, opts);
 
+    //close connection to redis
+    this.quit = function () {
+        client.quit();
+    };
+
     //clear all data in redis
     this.flushall = function () {
         client.flushall();
